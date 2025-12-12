@@ -41,7 +41,7 @@ export default function SketchList({ lastSaved }) {
       const data = await res.json();
       setLookups(data); // full Category/Color/Style objects
     } catch (err) {
-      console.error("❌ Failed to load lookups:", err);
+      console.error("Failed to load lookups:", err);
     }
   }, []);
 
@@ -58,7 +58,7 @@ export default function SketchList({ lastSaved }) {
       const arrayData = Array.isArray(data) ? data : [];
       setSketches(arrayData);
 
-      // 🔥 Extract dynamic filter options based on sketches only
+      // Extract dynamic filter options based on sketches only
       const categories = [
         ...new Set(arrayData.map((s) => s.category_id?.name).filter(Boolean)),
       ];

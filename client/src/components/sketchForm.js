@@ -58,7 +58,7 @@ export default function SketchForm({ onSave }) {
 
       await fetchLookups();
     } catch (err) {
-      console.error(`❌ Error adding ${type}:`, err);
+      console.error(`Error adding ${type}:`, err);
       alert(`Failed to add ${type}. See console for details.`);
     }
   };
