@@ -37,7 +37,7 @@ export default function SketchList({ lastSaved }) {
   -------------------------------------------------------- */
   const fetchLookups = useCallback(async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/lookups");
+      const res = await fetch("https://wardrobe-sketch.onrender.com/api/lookups");
       const data = await res.json();
       setLookups(data); // full Category/Color/Style objects
     } catch (err) {
@@ -52,7 +52,7 @@ export default function SketchList({ lastSaved }) {
     try {
       const params = new URLSearchParams(filters);
       const res = await fetch(
-        `http://localhost:5000/api/sketches?${params.toString()}`
+        `https://wardrobe-sketch.onrender.com/api/sketches?${params.toString()}`
       );
       const data = await res.json();
       const arrayData = Array.isArray(data) ? data : [];
@@ -95,7 +95,7 @@ export default function SketchList({ lastSaved }) {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this sketch?")) return;
     try {
-      await fetch(`http://localhost:5000/api/sketches/${id}`, {
+      await fetch(`https://wardrobe-sketch.onrender.com/api/sketches/${id}`, {
         method: "DELETE",
       });
       setSketches((prev) => prev.filter((s) => s._id !== id));
@@ -129,7 +129,7 @@ export default function SketchList({ lastSaved }) {
 
   const saveEdit = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/sketches/${id}`, {
+      const res = await fetch(`https://wardrobe-sketch.onrender.com/api/sketches/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editData),

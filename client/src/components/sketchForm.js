@@ -21,7 +21,7 @@ export default function SketchForm({ onSave }) {
   // Fetch dropdown options
   const fetchLookups = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/lookups');
+      const res = await fetch('https://wardrobe-sketch.onrender.com/api/lookups');
       const data = await res.json();
       setLookups(data);
     } catch (err) {
@@ -50,7 +50,7 @@ export default function SketchForm({ onSave }) {
       else if (type === 'style') endpoint = 'styles';
       else return;
 
-      await fetch(`http://localhost:5000/api/lookups/${endpoint}`, {
+      await fetch(`https://wardrobe-sketch.onrender.com/api/lookups/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
@@ -75,7 +75,7 @@ export default function SketchForm({ onSave }) {
         image,
       };
 
-      const res = await fetch('http://localhost:5000/api/sketches', {
+      const res = await fetch('https://wardrobe-sketch.onrender.com/api/sketches', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
